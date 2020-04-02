@@ -25,7 +25,7 @@ public class harishAssignment {
 		driver.get("http://newtours.demoaut.com/");
 		driver.manage().window().maximize();
 		
-		//*********Title Validation***************************
+		//*********Title Validation****************************
 		String PageTitle= driver.getTitle();
 		if(PageTitle.equalsIgnoreCase(HomePageTitle))
 		{
