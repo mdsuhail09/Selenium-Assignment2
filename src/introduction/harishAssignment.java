@@ -25,7 +25,7 @@ public class harishAssignment {
 		driver.get("http://newtours.demoaut.com/");
 		driver.manage().window().maximize();
 		
-		//*********Title Validation****************************
+		//*********Title Validation***************************
 		String PageTitle= driver.getTitle();
 		if(PageTitle.equalsIgnoreCase(HomePageTitle))
 		{
@@ -62,7 +62,10 @@ public class harishAssignment {
 		driver.findElement(By.name("password")).sendKeys("mercury");
 		driver.findElement(By.name("login")).click();
 		//********************validate select flight screen****************
-		WebElement validation1 =driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[1]/td/img"));
+		//WebElement validation1 =driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[1]/td/img"));
+		WebElement validation1 = driver.findElement(By.xpath("//img[@src='/images/masts/mast_flightfinder.gif']"));
+	String ff =	validation1.getText();
+		System.out.println(ff);
 		
 		if(validation1.isEnabled())
 		{
@@ -94,7 +97,7 @@ public class harishAssignment {
 		Thread.sleep(2000L);
 		
 		//************Select flight screen validation*******************
-		WebElement validation2 = driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[1]/td/img"));
+		WebElement validation2 = driver.findElement(By.xpath("//img[@src='/images/masts/mast_selectflight.gif']"));
 		if(validation2.isEnabled())
 		{
 			System.out.println("Select Flight  screen appears");
@@ -109,7 +112,7 @@ public class harishAssignment {
 		Element.click();
 		Thread.sleep(2000L);
 		//***********Book a flight screen ***********************
-		WebElement validation3=driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[1]/td/img"));
+		WebElement validation3=driver.findElement(By.xpath("//*[@src='/images/masts/mast_book.gif']"));
 		if(validation3.isEnabled())
 		{
 			System.out.println("Book a  Flight screen appears");
