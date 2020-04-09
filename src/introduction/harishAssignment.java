@@ -6,6 +6,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,6 +23,7 @@ public class harishAssignment {
 		System.setProperty("webdriver.chrome.driver", "C:\\\\Users\\\\suhail\\\\Music\\\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
+		driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 		driver.get("http://newtours.demoaut.com/");
 		driver.manage().window().maximize();
 		
@@ -47,8 +49,8 @@ public class harishAssignment {
 		System.out.println(todayDate);
 		
 		String pageDate=
-		driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[2]/td[3]/form/table/tbody/tr[1]/td/font/b")).getText();
-		
+		//driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[2]/td[3]/form/table/tbody/tr[1]/td/font/b")).getText();
+		driver.findElement(By.xpath("//tr[@align='right']/td/font/b")).getText();
 		if(todayDate.equalsIgnoreCase(pageDate))
 		{
 			System.out.println("The page date and today  is  same:" + pageDate);
@@ -64,8 +66,8 @@ public class harishAssignment {
 		//********************validate select flight screen****************
 		//WebElement validation1 =driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[1]/td/img"));
 		WebElement validation1 = driver.findElement(By.xpath("//img[@src='/images/masts/mast_flightfinder.gif']"));
-	String ff =	validation1.getText();
-		System.out.println(ff);
+	//String ff =	validation1.getText();
+		//System.out.println(ff);
 		
 		if(validation1.isEnabled())
 		{
@@ -75,26 +77,26 @@ public class harishAssignment {
 		{
 			System.out.println("Flight finder screen not appears");
 		}
-		driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[2]/td[2]/b/font/input[2]")).click();
+		driver.findElement(By.xpath("//input[@value='oneway']")).click();
 		Select dep = new Select(driver.findElement(By.name("fromPort")));
 		dep.selectByIndex(2);
-		Thread.sleep(2000L);
+		//Thread.sleep(2000L);
 		Select mon = new Select(driver.findElement(By.name("fromMonth")));
-		Thread.sleep(2000L);
+		//Thread.sleep(2000L);
 		mon.selectByValue("4");
-		Thread.sleep(2000L);
+		//Thread.sleep(2000L);
 		Select arr = new Select(driver.findElement(By.name("toPort")));
 		arr.selectByValue("New York");
 		Select toda = new Select(driver.findElement(By.name("toMonth")));
 		toda.selectByValue("5");
-		Thread.sleep(2000L);
-		driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[9]/td[2]/font/font/input[1]")).click();
-		Thread.sleep(2000L);
+		//Thread.sleep(2000L);
+		driver.findElement(By.xpath("//input[@value='Business']")).click();
+		//Thread.sleep(2000L);
 		Select arrli = new Select(driver.findElement(By.name("airline")));
 		arrli.selectByIndex(2);
 		driver.findElement(By.name("findFlights")).click();
 		System.out.println(driver.getTitle());
-		Thread.sleep(2000L);
+		//Thread.sleep(2000L);
 		
 		//************Select flight screen validation*******************
 		WebElement validation2 = driver.findElement(By.xpath("//img[@src='/images/masts/mast_selectflight.gif']"));
@@ -110,7 +112,7 @@ public class harishAssignment {
 		WebElement Element = driver.findElement(By.name("reserveFlights"));
 		js.executeScript("arguments[0].scrollIntoView();", Element);
 		Element.click();
-		Thread.sleep(2000L);
+		//Thread.sleep(2000L);
 		//***********Book a flight screen ***********************
 		WebElement validation3=driver.findElement(By.xpath("//*[@src='/images/masts/mast_book.gif']"));
 		if(validation3.isEnabled())
@@ -130,7 +132,7 @@ public class harishAssignment {
 		WebElement Element1 = driver.findElement(By.name("buyFlights"));
 		js.executeScript("arguments[0].scrollIntoView();", Element1);
 		Element1.click();
-		Thread.sleep(2000L);
+		//Thread.sleep(2000L);
 		driver.close();
 		
 		
